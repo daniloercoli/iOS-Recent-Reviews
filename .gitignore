@@ -1,0 +1,95 @@
+# ===== Node / Frontend (Vite/React/TS) =====
+node_modules/
+jspm_packages/
+
+# Build & caches
+dist/
+build/
+out/
+lib/
+coverage/
+storybook-static/
+.vite/
+.vite-inspect/
+.esbuild/
+.parcel-cache/
+.cache/
+.turbo/
+
+# Frameworks comuni
+.next/
+.nuxt/
+.svelte-kit/
+
+# Lint/tool caches
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Log
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Env (mantieni solo un esempio)
+.env
+.env.*
+!.env.example
+
+# Yarn Berry (2+)
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Test tooling (se li usi)
+cypress/videos/
+cypress/screenshots/
+playwright-report/
+test-results/
+
+# ===== Go (tutti i pacchetti / servizi) =====
+# binari e artefatti dipendenti dal SO
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# output bin/ tipico per build locali
+bin/
+cmd/**/bin/
+
+# coperture/trace
+coverage*.*
+*.coverprofile
+*.prof
+*.pprof
+
+# modcache locale (non nel repo)
+gocache/
+.go-cache/
+*.syso
+
+# se generi file con go:generate
+gen/
+**/generated/
+
+# ATTENZIONE: go.mod, go.sum, go.work, go.work.sum vanno versionati!
+# Se NON vuoi committare il vendoring, scommenta la riga sotto:
+# vendor/
+

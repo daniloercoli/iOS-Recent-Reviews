@@ -1,0 +1,18 @@
+{
+    "pollIntervalMinutes": 15,
+    "webhookUrl": "",
+    "circuitBreaker": {
+        "failureThreshold": 3,
+        "openCooldownSeconds": 60
+    },
+    "apps": [
+        {
+            "appId": "595068606",
+            "country": "us"
+        },
+        {
+            "appId": "447188370",
+            "country": "us"
+        }
+    ]
+}
