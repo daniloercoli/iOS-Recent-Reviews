@@ -9,6 +9,7 @@ import (
 type AppConfig struct {
 	AppID   string `json:"appId"`
 	Country string `json:"country"`
+	Name    string `json:"name,omitempty"` // NEW: optional
 }
 
 type CircuitBreakerConfig struct {

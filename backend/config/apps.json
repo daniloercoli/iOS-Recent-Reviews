@@ -8,11 +8,13 @@
     "apps": [
         {
             "appId": "595068606",
-            "country": "us"
+            "country": "us",
+            "name": "YouTube"
         },
         {
             "appId": "447188370",
-            "country": "us"
+            "country": "us",
+            "name": "Snapchat"
         }
     ]
 }

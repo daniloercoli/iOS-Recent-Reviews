@@ -55,7 +55,8 @@ export default function App() {
       return;
     }
     // ie: "Reviews · 595068606 (us) · last 48h"
-    document.title = `Reviews · ${selected.appId} (${selected.country}) · last ${effectiveHours}h`;
+    const label = selected.name || selected.appId;
+    document.title = `Reviews · ${label} (${selected.country}) · last ${effectiveHours}h`;
   }, [selected, effectiveHours]);
 
   return (
@@ -80,7 +81,7 @@ export default function App() {
             <option value="">— Select one app —</option>
             {apps.map(a => (
               <option key={`${a.appId}:${a.country}`} value={`${a.appId}:${a.country}`}>
-                {a.appId} ({a.country})
+                {a.name ? `${a.name} (${a.country})` : `${a.appId} (${a.country})`}
               </option>
             ))}
           </select>

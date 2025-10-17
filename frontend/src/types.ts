@@ -9,4 +9,4 @@ export type Review = {
     submittedAt: string; // ISO UTC
 };
 
-export type AppConfig = { appId: string; country: string };
+export type AppConfig = { appId: string; country: string, name?: string };
