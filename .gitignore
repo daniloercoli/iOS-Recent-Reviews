@@ -95,3 +95,4 @@ gen/
 
 backend/data/reviews/447188370-us.jsonl
 backend/data/state.json
+/backend/data
