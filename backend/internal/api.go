@@ -40,12 +40,39 @@ func BuildMux(cfg *Config, st *FileStore, mgr *Manager) *http.ServeMux {
 				hours = n
 			}
 		}
+
+		// NEW: minRating (default 0 => nessun filtro; altrimenti clamp 1..5)
+		minRating := 0
+		if mr := r.URL.Query().Get("minRating"); mr != "" {
+			if n, err := strconv.Atoi(mr); err == nil {
+				if n < 1 {
+					n = 1
+				}
+				if n > 5 {
+					n = 5
+				}
+				minRating = n
+			}
+		}
+
 		revs, err := st.ReadRecent(appID, country, time.Duration(hours)*time.Hour)
 		if err != nil {
 			log.Printf("read recent error: %v", err)
 			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "internal error"})
 			return
 		}
+
+		// NEW: filtro per rating minimo, se richiesto
+		if minRating >= 1 {
+			filtered := make([]Review, 0, len(revs))
+			for _, r := range revs {
+				if r.Rating >= minRating {
+					filtered = append(filtered, r)
+				}
+			}
+			revs = filtered
+		}
+
 		now := time.Now().UTC()
 		resp := map[string]any{
 			"appId": appID, "country": country,
