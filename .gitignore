@@ -93,3 +93,5 @@ gen/
 # Se NON vuoi committare il vendoring, scommenta la riga sotto:
 # vendor/
 
+backend/data/reviews/447188370-us.jsonl
+backend/data/state.json
