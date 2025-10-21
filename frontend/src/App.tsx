@@ -16,6 +16,8 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [lastWindow, setLastWindow] = useState<{ from: string; to: string; count: number } | null>(null);
+  // in alto tra gli state esistenti
+  const [minRating, setMinRating] = useState<number | undefined>(undefined);
 
   const effectiveHours = useMemo(() => {
     const v = Number(customHours);
@@ -35,7 +37,7 @@ export default function App() {
     (async () => {
       setLoading(true); setError(null);
       try {
-        const resp = await fetchReviews(selected.appId, selected.country, effectiveHours);
+        const resp = await fetchReviews(selected.appId, selected.country, effectiveHours, minRating);
         setReviews(resp.reviews);
         setLastWindow({ from: resp.from, to: resp.to, count: resp.count });
       } catch (e: any) {
@@ -45,7 +47,7 @@ export default function App() {
         setLoading(false);
       }
     })();
-  }, [selected, effectiveHours]);
+  }, [selected, effectiveHours, minRating]);
 
   // Update the tile after defining selected (chosen app) and hours/effectiveHours:
   useEffect(() => {
@@ -110,7 +112,24 @@ export default function App() {
             style={{ width: 90, marginLeft: 8, padding: 6 }}
           />
         </label>
-
+        <label>
+          Min rating:
+          <select
+            style={{ marginLeft: 8, padding: 6 }}
+            value={minRating ?? ""}
+            onChange={(e) => {
+              const v = e.target.value === "" ? undefined : Number(e.target.value);
+              setMinRating(v);
+            }}
+          >
+            <option value="">All</option>
+            <option value="1">≥ 1</option>
+            <option value="2">≥ 2</option>
+            <option value="3">≥ 3</option>
+            <option value="4">≥ 4</option>
+            <option value="5">≥ 5</option>
+          </select>
+        </label>
         <button
           onClick={() => {
             // retrigger fetch
