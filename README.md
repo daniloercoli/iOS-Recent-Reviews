@@ -1,5 +1,7 @@
 # Recent iOS App Store Reviews — Monorepo
 
+A tool that automates the collection and analysis of iOS app reviews, making it easier for developers to stay updated on user feedback. 
+
 This repo contains:
 
 - **Backend (Go)** — polls App Store Customer Reviews RSS, stores reviews on disk, exposes an API to read the last *N* hours (default 48h).  
